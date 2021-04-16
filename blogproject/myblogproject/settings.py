@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # blog라는 App 만들고 여기에 알려주자
     'blog.apps.BlogConfig',
+    
 ]
 
 MIDDLEWARE = [
