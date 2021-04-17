@@ -9,4 +9,6 @@ class Blog(models.Model) :
     def __str__(self) :
         return self.title
 
-    def summary()
+    def summary(self) :
+        return self.body[:100] # 100 글자 제한으로 return해라
+        
