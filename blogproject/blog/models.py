@@ -11,4 +11,4 @@ class Blog(models.Model) :
 
     def summary(self) :
         return self.body[:100] # 100 글자 제한으로 return해라
-        
+
