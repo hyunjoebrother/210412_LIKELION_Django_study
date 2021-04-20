@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Blog
 
 from django.utils import timezone
@@ -25,13 +25,14 @@ def new(request) :
 # html 파일 필요 없음 ㅇㅇ create 함수 실행을 위한 url 연결임. 이제 작업하자
 # create 함수 : 입력받은 내용을 DB에 넣어주는 함수
 def create(request) :
-    blog = Blog() # Blog 클래스로부터 blog라는 객체 생성 a
+    create_blog = Blog() # Blog 클래스로부터 create_blog라는 객체 생성 a
 
-    blog.title = request.GET['title'] # new.html-form에서 입력한 내용 가져옴
-    blog.pub_date = timezone.datetime.now() # 현재시각 나타내는 함수 import 필요
-    blog.body = request.GET['body']
-    blog.save() # Queryset Method임 blog, blog.xxx data가 담긴 객체들을 DB에 저장해라
+    create_blog.title = request.GET['title'] # new.html-form에서 입력한 내용 가져옴
+    create_blog.pub_date = timezone.datetime.now() # 현재시각 나타내는 함수 import 필요
+    create_blog.body = request.GET['body']
 
-    # return 작업 전에 글쓰기 test
+    create_blog.save() # Queryset Method임 create_blog.xxx data가 담긴 객체들을 DB에 저장해라
 
-    return render(request, 'create.html')
+    # return 작업 전에 글쓰기 test -> admin에 DB 저장되긴 했는지 확인해보자 -> ok
+
+    return redirect('/blog/'+str(create_blog.id)) # 여기 url로 바로 이동해라
