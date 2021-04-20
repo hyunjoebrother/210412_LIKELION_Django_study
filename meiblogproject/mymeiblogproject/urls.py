@@ -24,5 +24,5 @@ urlpatterns = [
 
     # detail할 때 url부터 작업 시작
     # path converter로 type 지정해줌 -> home.html에서 url 태그 수정
-    path('blog/<int:blog_id>', blogapp.views.detail, name = 'detail'),
+    path('detail/<int:blog_id>', blogapp.views.detail, name = 'detail'),
 ]
