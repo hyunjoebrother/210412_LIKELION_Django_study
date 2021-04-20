@@ -16,3 +16,8 @@ class Blog(models.Model) :
         return self.title
 
     # 이제 model을 화면에 출력하기 위해 views.py에 import
+
+
+    # 이제 class에 글자수 제한 함수 넣자
+    def summary(self) :
+        return self.body[:100] # 100 글자 제한으로 return

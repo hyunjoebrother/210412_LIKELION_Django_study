@@ -1,0 +1,19 @@
+<h1>Home 입니다</h1>
+
+<!-- {{blogs}}  blogs = Blog.objects # model로부터 객체 목록을 전달 -->
+
+<!-- html 파일 작성하면 url 작업 -->
+
+<!-- Blog라는 클래스로 만든 객체들Queryset 가져오는 Method -->
+{% for blog in blogs.all %} 
+    <h1> 제목 : {{blog.title}} </h1>
+    <p> 날짜 : {{blog.pub_date}} </p>
+    <!-- <p> 본문 : {{blog.body}} </p> -->
+    <p> 본문 미리보기 : {{blog.summary}} <a href="{% url 'detail' blog.id %}">...more</a> </p>
+    
+
+{% endfor %}
+
+<!-- 이제 class에 글자수 제한 함수 넣자 -->
+<!-- ...more 더보기에 링크 걸자 -->
+<!-- 이제 detail.html 페이지 만들자 url부터 먼저 작업 -->
