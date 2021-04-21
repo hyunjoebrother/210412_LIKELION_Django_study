@@ -44,3 +44,7 @@ def edit(request, edit_id) :
     blog_edit = Blog.objects.get(id = edit_id)
 
     return render(request, 'edit.html', {'blog' : blog_edit})
+
+
+def update(request) :
+    return render(request, 'update.html')
