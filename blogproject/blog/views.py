@@ -45,6 +45,14 @@ def edit(request, edit_id) :
 
     return render(request, 'edit.html', {'blog' : blog_edit})
 
+# 글 수정 후 수정완료(제출)하는 update 함수
+def update(request, update_id) :
+    update_blog = Blog.objects.get(id = update_id)
 
-def update(request) :
-    return render(request, 'update.html')
+    update_blog.title = request.GET['title'] 
+    update_blog.pub_date = timezone.datetime.now() 
+    update_blog.body = request.GET['body']
+
+    update_blog.save() # DB 적용!
+
+    return redirect('/blog/'+str(update_blog.id))
