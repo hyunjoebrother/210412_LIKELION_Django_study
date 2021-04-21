@@ -25,5 +25,5 @@ urlpatterns = [
     # CRUD 시작
     path('blog/new/', blog.views.new, name = 'new'),
     path('blog/create', blog.views.create, name = 'create'), # create 함수 연결용임 html 파일 필요없음
-    
+    path('blog/<int:edit_id>', blog.views.edit, name = 'edit'),
 ]

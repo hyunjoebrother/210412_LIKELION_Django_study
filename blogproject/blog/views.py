@@ -36,3 +36,11 @@ def create(request) :
     # return 작업 전에 글쓰기 test -> admin에 DB 저장되긴 했는지 확인해보자 -> ok
 
     return redirect('/blog/'+str(create_blog.id)) # 여기 url로 바로 이동해라
+
+
+# UPDATE 작업 시작
+def edit(request, edit_id) :
+    # get 함수로 edit_id를 받아서 blog_edit 라는 변수에 담고 전달
+    blog_edit = Blog.objects.get(id = edit_id)
+
+    return render(request, 'edit.html', {'blog' : blog_edit})
