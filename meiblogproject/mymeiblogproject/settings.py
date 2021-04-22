@@ -57,7 +57,9 @@ ROOT_URLCONF = 'mymeiblogproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        
+        # 템플릿 상속 - base.html 존재를 알리자
+        'DIRS': ['mymeiblogproject/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
