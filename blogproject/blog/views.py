@@ -56,3 +56,11 @@ def update(request, update_id) :
     update_blog.save() # DB 적용!
 
     return redirect('/blog/'+str(update_blog.id))
+
+
+def delete(request, delete_id) :
+    delete_blog = Blog.objects.get(id = delete_id)
+
+    delete_blog.delete()
+
+    return redirect('/')
