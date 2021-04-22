@@ -18,9 +18,9 @@ def home(request) :
 def detail(request, blog_id) :
     # 특정 번호의 객체를 담기 위해 검색조건 pk 지정
     # 다음 함수로 object를 get하기도 하고 404 예외처리도 가능 + import하자
-    blog_detail = get_object_or_404(Blog, pk = blog_id)
+    detail_blog = get_object_or_404(Blog, pk = blog_id)
 
-    return render(request, 'detail.html', {'blog' : blog_detail})
+    return render(request, 'detail.html', {'blog' : detail_blog})
 
 # 이제 detail.html 작업하자 
 
@@ -63,3 +63,11 @@ def update(request, update_id) : # 글 edit하여 덮여쓰고 제출
 
     # 글 생성 후 url 바로 이동
     return redirect('/detail/' + str(update_blog.id))
+
+# Delete 작업 시작
+def delete(request, delete_id) :
+    delete_blog = Blog.objects.get(id = delete_id)
+
+    delete_blog.delete()
+
+    return redirect('/') # home으로 돌아가도록

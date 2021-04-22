@@ -11,9 +11,11 @@
         <p> 본문 내용 : {{blog.body}} </p>
         <br><br>
         <a href="{% url 'edit' blog.id %}">수정하기</a>
+        <br><br>
+        <a href="{% url 'delete' blog.id %}">삭제하기</a>
+        <br><br>
+        <a href="{% url 'home' %}">Its alright 우리집으로 가자</a>
       </div>
-      
-      
 </body>
 
 {% endblock %}

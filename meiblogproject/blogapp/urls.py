@@ -18,5 +18,6 @@ urlpatterns = [
     # Update 작업
     path('edit/<int:edit_id>', views.edit, name = 'edit'),
     path('update/<int:update_id>', views.update, name = 'update'),
-
+    # Delete 작업
+    path('delete/<int:delete_id>', views.delete, name = 'delete'),
 ]
