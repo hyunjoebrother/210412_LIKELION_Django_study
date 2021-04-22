@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<body>
+    <h1>새 글쓰기 페이지</h1>
+
+    <!-- home.html에 글쓰기 링크 걸자 -->
+    <!-- form 태그 만들고 create.html 링크 걸자 -->
+    <form action="{% url 'create' %}">
+        <h1>제목 : </h1>
+        <input type="text" name = "title">
+        <br><br>
+        <h1>본문 : </h1>
+        <textarea name="body" id="" cols="30" rows="10"></textarea>
+        <br><br>
+        <input type="submit" value = "제출하기">
+    </form>
+</body>
+{% endblock %}

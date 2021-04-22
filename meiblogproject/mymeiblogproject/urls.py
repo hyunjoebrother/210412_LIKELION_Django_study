@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 import blogapp.views
 
@@ -24,5 +24,6 @@ urlpatterns = [
 
     # detail할 때 url부터 작업 시작
     # path converter로 type 지정해줌 -> home.html에서 url 태그 수정
-    path('detail/<int:blog_id>', blogapp.views.detail, name = 'detail'),
+    #path('detail/<int:blog_id>', blogapp.views.detail, name = 'detail'),
+    path('detail/', include('blogapp.urls')), # URL 정리!
 ]

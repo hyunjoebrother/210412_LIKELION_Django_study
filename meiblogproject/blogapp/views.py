@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # model을 화면에 출력하기 위해 views.py에 import
 from .models import Blog
+
+from django.utils import timezone
+
 
 # Create your views here.
 def home(request) :
@@ -20,3 +23,43 @@ def detail(request, blog_id) :
     return render(request, 'detail.html', {'blog' : blog_detail})
 
 # 이제 detail.html 작업하자 
+
+# Create 작업 시작 - 글쓰기 페이지 만들기
+def new(request) : # new.html 화면 띄워줌
+    return render(request, 'new.html')
+
+# create 함수 실행을 위한 url 연결
+def create(request) : # 입력값을 DB에 넣어주는 함수, html X
+    # Blog 클래스로부터 create_blog라는 객체 생성
+    create_blog = Blog()
+
+    # new.html에서 입력값을 가져옴 GET
+    create_blog.title = request.GET['title']
+    create_blog.pub_date = timezone.datetime.now() # import 필요
+    create_blog.body = request.GET['body']
+
+    # Query Method - 객체들을 DB에 저장
+    create_blog.save()
+
+    # 글 생성 후 url 바로 이동
+    return redirect('/detail/' + str(create_blog.id))
+
+# Update 작업 시작
+def edit(request, edit_id) :
+    # get 함수로 edit_id를 받아서 edit_blog 에 담고 전달
+    edit_blog = Blog.objects.get(id = edit_id)
+
+    return render(request, 'edit.html', {'blog' : edit_blog})
+
+def update(request, update_id) : # 글 edit하여 덮여쓰고 제출
+    update_blog = Blog.objects.get(id = update_id)
+    
+    update_blog.title = request.GET['title']
+    update_blog.pub_date = timezone.datetime.now() # import 필요
+    update_blog.body = request.GET['body']
+
+    # Query Method - 객체들을 DB에 저장
+    update_blog.save()
+
+    # 글 생성 후 url 바로 이동
+    return redirect('/detail/' + str(update_blog.id))

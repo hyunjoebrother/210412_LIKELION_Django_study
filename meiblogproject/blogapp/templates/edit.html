@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<body>
+    <h1>수정 페이지</h1>
+
+    <!-- value로 기존 내용 불러와서 수정하자 -->
+    <!-- update 함수로 기존 객체 불러와서 덮여쓰고 제출 -->
+    <!-- blog.id는 path converter로 보내진다 -->
+    <!-- detail.html에 수정하기 링크 걸자 -->
+
+    <form action="{% url 'update' blog.id %}">
+        <h1>제목 : </h1>
+        <input type="text" name = "title" value = "{{blog.title}}">
+        <br><br>
+        <h1>본문 : </h1>
+        <textarea name="body" id="" cols="30" rows="10">{{blog.body}}</textarea>
+        <br><br>
+        <input type="submit" value = "수정완료">
+    </form>
+</body>
+{% endblock %}
